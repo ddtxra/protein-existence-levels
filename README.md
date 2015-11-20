@@ -4,7 +4,7 @@ Simple example that shows how to use nextprot community viewers.
 
 This example is accessible in nextprot throught the following link: https://search.nextprot.org/entry/NX_P01308/gh/ddtxra/protein-existence-levels
 
-To create community viewers:
+To create a community viewer:
 
 * Create a new repository on GitHub
 * Create a branch gh-pages
