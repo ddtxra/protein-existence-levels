@@ -2,7 +2,7 @@
 
 Simple example that shows how to use nextprot community viewers.
 
-accessible in nextprot throught the following link: https://search.nextprot.org/entry/NX_P01308/gh/ddtxra/protein-existence-levels
+This example is accessible in nextprot throught the following link: https://search.nextprot.org/entry/NX_P01308/gh/ddtxra/protein-existence-levels
 
 To create community viewers:
 
