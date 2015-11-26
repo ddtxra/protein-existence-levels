@@ -1,9 +1,7 @@
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://cdn.rawgit.com/calipho-sib/nextprot-js/v0.0.51/dist/nextprot.min.js"></script>
+<script src="https://cdn.rawgit.com/calipho-sib/nextprot-js/v0.0.51/dist/nextprot.bundle.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
 </head>
 <body>
   <div id="plot" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -15,7 +13,9 @@
       var nx = new Nextprot.Client(applicationName, clientInformation);
       //Define your sparql
       var proteinsByExistenceLevel ='SELECT ?pe count(?entry) as ?cnt ' + 
-                                    'WHERE {?entry :existence ?pe} group by ?pe order by desc(?cnt)';
+                                    'WHERE {?entry :existence ?pe} ' + 
+                                    'group by ?pe order by desc(?cnt)';
+     
       //Execute the sparql and retrieve result
       nx.executeSparql(proteinsByExistenceLevel).then(function (result){
         var seriesData = [];
@@ -23,12 +23,32 @@
           seriesData.push([data.pe.value, parseInt(data.cnt.value)]); //gets number of entries
         });
         //Draw the plot
-        $('#plot').highcharts({chart: {type: 'pie',  options3d: { enabled: true, alpha: 45 }},
-          title: { text: 'Protein existence in neXtProt' },
-          plotOptions: {pie: { innerSize: 100,  depth: 45 } },
-          series: [{name: 'neXtProt entries count',data: seriesData }]
+        $('#plot').highcharts({
+            chart: {
+            plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Protein Entry Levels'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+
+            series: [{name: 'neXtProt entries count',data: seriesData }]
         });
+          
       });
+      
   </script>
 </html>
 
