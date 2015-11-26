@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src="https://cdn.rawgit.com/calipho-sib/nextprot-js/v0.0.51/dist/nextprot.bundle.js"></script>
+<script src="https://cdn.rawgit.com/calipho-sib/nextprot-js/v0.0.54/dist/nextprot.bundle.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
 </head>
 <body>
@@ -22,28 +22,13 @@
         result.results.bindings.map(function (data) {
           seriesData.push([data.pe.value, parseInt(data.cnt.value)]); //gets number of entries
         });
-        //Draw the plot
-        $('#plot').highcharts({
-            chart: {
-            plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Protein Entry Levels'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
+        console.log(seriesData);
 
+          //Draw the plot
+        $('#plot').highcharts({
+            chart: { type: 'pie'},
+            title: { text: 'Protein Entry Levels'},
+            plotOptions: { pie: { dataLabels: {enabled: false}, showInLegend: true }},
             series: [{name: 'neXtProt entries count',data: seriesData }]
         });
           
