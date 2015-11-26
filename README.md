@@ -16,3 +16,10 @@ To publish your viewer in nextprot you can either:
 * ask us (support@nextprot.org).
 
 Happy programming =)
+
+# Instructions
+
+This examples includes the [nextprot-js](https://github.com/calipho-sib/nextprot-js) libary with it external dependencies.
+```javascript
+<script src="https://cdn.rawgit.com/calipho-sib/nextprot-js/v0.0.51/dist/nextprot.bundle.js"></script>
+```
